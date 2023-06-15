@@ -38,5 +38,5 @@ private:
 
 	const int CHANGE_NEXT_NODE = (int)(0.2 * GraphicConst::GRAPHIC_FPS);	//次のノードを再生するまでの時間．
 
-	const int GET_NODE_COUNT = 2 * GraphicConst::GRAPHIC_FPS;	//2秒ごとに読み出す．
+	const int GET_NODE_COUNT = 1 * GraphicConst::GRAPHIC_FPS;	//2秒ごとに読み出す．
 };
