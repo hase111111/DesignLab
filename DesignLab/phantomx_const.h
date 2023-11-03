@@ -66,7 +66,7 @@ public:
 	constexpr static float kBodyHeight = 40.0f;			//!< 胴体の高さ[mm]．
 
 
-	constexpr static float kBodyLiftingHeightMin = 50;	//!< 地面から胴体を持ち上げる高さ[mm]．最小ここまで下げられる．
+	constexpr static float kBodyLiftingHeightMin = 30;	//!< 地面から胴体を持ち上げる高さ[mm]．最小ここまで下げられる．
 	constexpr static float kBodyLiftingHeightMax = 160;	//!< 地面から胴体を持ち上げる高さ[mm]．最大ここまで上げられる．
 
 	//! @brief 第1関節の角度が有効な範囲内かどうかを判定する．
