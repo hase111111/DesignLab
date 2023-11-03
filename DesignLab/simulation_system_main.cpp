@@ -26,7 +26,7 @@ SimulationSystemMain::SimulationSystemMain(
 	result_exporter_.Init();
 
 	//マップを生成する．
-	SimulationMapCreator map_creator(MapCreateMode::kFlat, static_cast<unsigned int>(MapCreateOption::kStep));
+	SimulationMapCreator map_creator(MapCreateMode::kFlat, static_cast<unsigned int>(MapCreateOption::kSlope));
 	map_state_ = map_creator.InitMap();
 
 	//仲介人にマップを渡す．

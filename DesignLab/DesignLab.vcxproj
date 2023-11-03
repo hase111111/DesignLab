@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_hexapod_state_calculator.h" />
+    <ClInclude Include="CsvTemp.h" />
     <ClInclude Include="designlab_array_util.h" />
     <ClInclude Include="asyncable_data.h" />
     <ClInclude Include="boot_mode_selecter.h" />
@@ -137,6 +138,7 @@
     <ClCompile Include="camera_gui.cpp" />
     <ClCompile Include="com_candidate_polygon_maker.cpp" />
     <ClCompile Include="com_move_node_creator_hato.cpp" />
+    <ClCompile Include="CsvTemp.cpp" />
     <ClCompile Include="designlab_rot_converter.cpp" />
     <ClCompile Include="designlab_string_util.cpp" />
     <ClCompile Include="_com_selecter.cpp" />
