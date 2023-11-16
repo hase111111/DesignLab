@@ -17,9 +17,9 @@ void CsvTemp::WriteCsv()
 	//ディレクトリを指定する
 	//std::filesystem::path path = "./result/シミュレーション_平面";
 	//std::filesystem::path path = "./result/シミュレーション_15[deg]";
-	std::filesystem::path path = "./result/シミュレーション_-15[deg]";
+	//std::filesystem::path path = "./result/シミュレーション_-15[deg]";
 	//std::filesystem::path path = "./result/シミュレーション_100[mm]";
-	//std::filesystem::path path = "./result/シミュレーション_-100[mm]";
+	std::filesystem::path path = "./result/シミュレーション_-100[mm]";
 
 
 
@@ -43,6 +43,7 @@ void CsvTemp::WriteCsv()
 	int success_count = 0;
 
 	std::vector<std::tuple<int, Vector3>> faild_leg_pos;
+	std::vector<std::tuple<int, Vector3, Vector3, Vector3>> interpolated_faild_leg_pos;
 
 	//ディレクトリ内のnode_list1.csvからnode_list5.csvまでのファイルを読み込む
 	for (int n = 1; n <= 5; n++)
@@ -162,11 +163,28 @@ void CsvTemp::WriteCsv()
 						else if (IsGrounded(node_list[i - 1].leg_state, w))
 						{
 							interpolated_faild_lift_node_sum++;
+
+							interpolated_faild_leg_pos.push_back(std::make_tuple(
+								w,
+								node_list[i - 1].leg_pos[w],
+								Vector3(node_list[i - 1].leg_pos[w].x, node_list[i - 1].leg_pos[w].y, node_list[i].leg_pos[w].z),
+								node_list[i].leg_pos[w]
+							)
+							);
 						}
 						else if (IsGrounded(node_list[i].leg_state, w))
 						{
 							interpolated_faild_ground_node_sum++;
+
+							interpolated_faild_leg_pos.push_back(std::make_tuple(
+								w,
+								node_list[i - 1].leg_pos[w],
+								Vector3(node_list[i].leg_pos[w].x, node_list[i].leg_pos[w].y, node_list[i-1].leg_pos[w].z),
+								node_list[i].leg_pos[w]
+							)
+							);
 						}
+
 
 						is_faild = true;
 						std::cout << "\t" << w << "脚の" << i << "番目のノードが補完に失敗しました" << std::endl;
@@ -237,5 +255,26 @@ void CsvTemp::WriteCsv()
 		}
 	}
 	std::cout << "] " << std::endl;
+
+	//失敗したノードの座標を出力 for python
+	std::cout << std::endl;
+	std::cout << "補間に失敗したノードの座標 for python" << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "tup_list += [";
+	for (size_t i = 0; i < interpolated_faild_leg_pos.size(); i++)
+	{
+		if (std::get<1>(interpolated_faild_leg_pos[i]).z > kZMax) { continue; }
+		if (std::get<2>(interpolated_faild_leg_pos[i]).z > kZMax) { continue; }
+		if (std::get<3>(interpolated_faild_leg_pos[i]).z > kZMax) { continue; }
+
+		std::cout << std::get<1>(interpolated_faild_leg_pos[i]).ProjectedXY().GetLength() << ",";
+		std::cout << std::get<1>(interpolated_faild_leg_pos[i]).z << ",";
+		std::cout << std::get<2>(interpolated_faild_leg_pos[i]).ProjectedXY().GetLength() << ",";
+		std::cout << std::get<2>(interpolated_faild_leg_pos[i]).z << ",";
+		std::cout << std::get<3>(interpolated_faild_leg_pos[i]).ProjectedXY().GetLength() << ",";
+		std::cout << std::get<3>(interpolated_faild_leg_pos[i]).z << ",";
+	}
+	std::cout << "]" << std::endl;
 
 }
