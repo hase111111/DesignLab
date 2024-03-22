@@ -1,6 +1,7 @@
 ﻿
 //! @author    Hasegawa
-//! @copyright (C) 2023 Design Engineering Laboratory, Saitama University All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #include "phantomx_mk2_renderer_model.h"
 
@@ -55,22 +56,26 @@ void PhantomXMkIIRendererModel::Draw() const
 
 void PhantomXMkIIRendererModel::DrawBody() const
 {
-    const int body_model_handle = ModelLoader::GetIns()->GetModelHandle("model/body.mv1");
+    const int body_model_handle =
+        ModelLoader::GetIns()->GetModelHandle("model/body.mv1");
 
-    // モデルの読み込みがされていなければ描画しない(というかできない)
+    // モデルの読み込みがされていなければ描画しない (というかできない)
     if (body_model_handle == -1)
     {
         printfDx("モデルの読み込みに失敗しました．(body_model_handle)");
     }
 
-    const VECTOR scale = VGet(10.f, 10.f, 10.f);  // モデルの寸法を調整するためのスケール．
+    // モデルの寸法を調整するためのスケール．
+    const VECTOR scale = VGet(10.f, 10.f, 10.f);
 
 
     MV1SetScale(body_model_handle, scale);
 
     // dxlib の座標系は左手座標系なので，右手座標系に変換するために逆転させる．
-    MV1SetRotationMatrix(body_model_handle,
-               dxlib_util::ConvertToDxlibMat(ToRotationMatrix(draw_node_.posture.ToLeftHandCoordinate())));
+    MV1SetRotationMatrix(
+        body_model_handle,
+        dxlib_util::ConvertToDxlibMat(
+        ToRotationMatrix(draw_node_.posture.ToLeftHandCoordinate())));
 
     MV1SetPosition(body_model_handle, dxlib_util::ConvertToDxlibVec(draw_node_.center_of_mass_global_coord));
 
@@ -88,7 +93,8 @@ void PhantomXMkIIRendererModel::DrawBody() const
 
 void PhantomXMkIIRendererModel::DrawCoxaLink(const int leg_index) const
 {
-    const int coxa_model_handle = ModelLoader::GetIns()->GetModelHandle("model/coxa_fixed.mv1");
+    const int coxa_model_handle =
+        ModelLoader::GetIns()->GetModelHandle("model/coxa_fixed.mv1");
 
     if (coxa_model_handle == -1)
     {

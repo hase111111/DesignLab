@@ -1,6 +1,7 @@
 ﻿
 //! @author    Hasegawa
-//! @copyright (C) 2023 Design Engineering Laboratory, Saitama University All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #include "world_grid_renderer.h"
 
@@ -50,12 +51,16 @@ void WorldGridRenderer::Draw() const
         SetDrawBlendMode(DX_BLENDMODE_ALPHA, kMainGridAlpha);  // 半透明にする．
 
         // メインの格子線を描画する．
-        VECTOR start_pos = VGet(kGridMinX, kGridMinY + kMainGridInterval * i, kGridLineZPos);
-        VECTOR end_pos = VGet(kGridMaxX, kGridMinY + kMainGridInterval * i, kGridLineZPos);
+        VECTOR start_pos =
+            VGet(kGridMinX, kGridMinY + kMainGridInterval * i, kGridLineZPos);
+        VECTOR end_pos =
+            VGet(kGridMaxX, kGridMinY + kMainGridInterval * i, kGridLineZPos);
         DrawLine3D(start_pos, end_pos, kMainGridXColor);
 
-        start_pos = VGet(kGridMinX + kMainGridInterval * i, kGridMinY, kGridLineZPos);
-        end_pos = VGet(kGridMinX + kMainGridInterval * i, kGridMaxY, kGridLineZPos);
+        start_pos =
+            VGet(kGridMinX + kMainGridInterval * i, kGridMinY, kGridLineZPos);
+        end_pos =
+            VGet(kGridMinX + kMainGridInterval * i, kGridMaxY, kGridLineZPos);
         DrawLine3D(start_pos, end_pos, kMainGridYColor);
 
 

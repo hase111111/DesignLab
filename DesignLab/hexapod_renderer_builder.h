@@ -1,7 +1,8 @@
 ﻿
 //! @file      hexapod_renderer_builder.h
 //! @author    Hasegawa
-//! @copyright (C) 2023 Design Engineering Laboratory, Saitama University All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #ifndef DESIGNLAB_HEXAPOD_RENDERER_BUILDER_H_
 #define DESIGNLAB_HEXAPOD_RENDERER_BUILDER_H_
@@ -29,7 +30,8 @@ public:
     //! @param[in] converter_ptr 座標変換クラスのインスタンス．
     //! @param[in] calculator_ptr 関節計算クラスのインスタンス．
     //! @return HexapodRendererクラスのインスタンス．
-    //! あまりよくない気がするが，継承している2つのインターフェースで返すために，std::tupleで返す．
+    //! あまりよくない気がするが，
+    //! 継承している2つのインターフェースで返すために，std::tupleで返す．
     static std::tuple<std::shared_ptr<IDxlib3dRenderer>, std::shared_ptr<IDxlibNodeSetter> > Build(
       const std::shared_ptr<const IHexapodCoordinateConverter>& converter_ptr,
       const std::shared_ptr<const IHexapodJointCalculator>& calculator_ptr,

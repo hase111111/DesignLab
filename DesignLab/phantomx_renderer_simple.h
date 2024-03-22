@@ -1,7 +1,8 @@
 ﻿
 //! @file      phantomx_renderer_simple.h
 //! @author    Hasegawa
-//! @copyright (C) 2023 Design Engineering Laboratory, Saitama University All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #ifndef DESIGNLAB_PHANTOMX_RENDERER_SIMPLE_H_
 #define DESIGNLAB_PHANTOMX_RENDERER_SIMPLE_H_
@@ -25,7 +26,8 @@ namespace designlab
 
 //! @class PhantomXRendererSimple
 //! @brief 3Dモデルを使用せず，多角形を組み合わせてPhantomXの描画を行うクラス．
-class PhantomXRendererSimple final : public IDxlib3dRenderer, public IDxlibNodeSetter
+class PhantomXRendererSimple final :
+    public IDxlib3dRenderer, public IDxlibNodeSetter
 {
 public:
     PhantomXRendererSimple(
@@ -50,17 +52,20 @@ private:
     const unsigned int kColorErrorJoint;    //!< 文字の色．
     const unsigned int kColorErrorText;     //!< エラーの文字色．
 
-    //! ロボットのモデルの円柱をどれだけ細かく描画するか．4 ～ 20ぐらいがちょうどよい．
+    //! ロボットのモデルの円柱をどれだけ細かく描画するか．
+    //! 4 ～ 20ぐらいがちょうどよい．
     const int kCapsuleDivNum;
 
-    //! ロボットのモデルの球をどれだけ細かく描画するか．16 ～ 32ぐらいがちょうどよい．
+    //! ロボットのモデルの球をどれだけ細かく描画するか．
+    //! 16 ～ 32ぐらいがちょうどよい．
     const int kSphereDivNum;
 
     //! 脚の半径．このクラスでは脚を円柱に近似して描画している．
     //! 描画時のデータのため，これを変化させてもシミュレーションに影響はない．
     const float kLegRadius;
 
-    //!< ジョイントの半径．描画時のデータのため，これを変化させてもシミュレーションに影響はない．
+    //! ジョイントの半径．描画時のデータのため，
+    //! これを変化させてもシミュレーションに影響はない．
     const float kJointRadius;
 
     const bool kDoOutputDebugLog = false;  //!< 脚状態を文字列で出力するかどうか

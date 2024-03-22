@@ -1,7 +1,8 @@
 ﻿
 //! @file      approximated_motion_range_render.h
 //! @author    hasegawa
-//! @copyright © 埼玉大学 設計工学研究室 2024. All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #ifndef DESIGNLAB_APPROXIMATED_MOTION_RANGE_RENDER_H_
 #define DESIGNLAB_APPROXIMATED_MOTION_RANGE_RENDER_H_
@@ -25,8 +26,9 @@ class ApproximatedMotionRangeRender :
     public IDxlibNodeSetter
 {
 public:
-    ApproximatedMotionRangeRender(const std::shared_ptr<const IHexapodPostureValidator>& validator,
-                                  const std::shared_ptr<const IHexapodCoordinateConverter>& converter);
+    ApproximatedMotionRangeRender(
+        const std::shared_ptr<const IHexapodPostureValidator>& validator,
+        const std::shared_ptr<const IHexapodCoordinateConverter>& converter);
     ~ApproximatedMotionRangeRender() = default;
 
     void Draw() const override;

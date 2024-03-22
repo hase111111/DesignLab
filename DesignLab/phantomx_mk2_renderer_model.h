@@ -1,7 +1,8 @@
 ﻿
 //! @file      phantomx_mk2_renderer_model.h
 //! @author    Hasegawa
-//! @copyright (C) 2023 Design Engineering Laboratory, Saitama University All right reserved.
+//! @copyright (C) 2023 Design Engineering Laboratory,
+//! Saitama University All right reserved.
 
 #ifndef DESIGNLAB_PHANTOMX_MK2_RENDERER_MODEL_H_
 #define DESIGNLAB_PHANTOMX_MK2_RENDERER_MODEL_H_
@@ -26,7 +27,8 @@ namespace designlab
 //! @class PhantomXMkIIRendererModel
 //! @brief 3Dモデルを使用して PhantomX の描画を行うクラス．
 //! @todo リネームすること．
-class PhantomXMkIIRendererModel final : public IDxlib3dRenderer, public IDxlibNodeSetter
+class PhantomXMkIIRendererModel final :
+    public IDxlib3dRenderer, public IDxlibNodeSetter
 {
 public:
     PhantomXMkIIRendererModel(
